@@ -11,12 +11,13 @@ const MAX_TEXT = 200;
 const truncate = (str) =>
     str.length > MAX_TEXT ? str.slice(0, MAX_TEXT).trimEnd() + '…' : str;
 
-const formatDate = (dateStr) => {
+const formatDate = (dateStr, lang) => {
     const d = new Date(dateStr + 'T00:00:00');
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const locale = lang === 'es' ? 'es-AR' : 'en-US';
+    return d.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
 };
 
-const PostCard = ({ post, viewPostLabel }) => (
+const PostCard = ({ post, viewPostLabel, lang }) => (
     <a
         href={post.url}
         target="_blank"
@@ -32,10 +33,10 @@ const PostCard = ({ post, viewPostLabel }) => (
             />
         )}
         <p className="text-zinc-300 text-sm leading-relaxed flex-1">
-            {truncate(post.text)}
+            {truncate(lang === 'es' && post.textEs ? post.textEs : post.text)}
         </p>
         <div className="flex items-center justify-between mt-auto pt-2 border-t border-zinc-800">
-            <span className="text-zinc-500 text-xs">{formatDate(post.date)}</span>
+            <span className="text-zinc-500 text-xs">{formatDate(post.date, lang)}</span>
             <span className="text-blue-400 text-sm flex items-center gap-1.5 font-medium">
                 <FontAwesomeIcon icon={faLinkedin} />
                 {viewPostLabel}
@@ -45,7 +46,7 @@ const PostCard = ({ post, viewPostLabel }) => (
 );
 
 export const Posts = () => {
-    const { t } = useLang();
+    const { lang, t } = useLang();
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState(false);
 
@@ -81,14 +82,14 @@ export const Posts = () => {
                                 className="border border-zinc-700 text-zinc-300 py-2.5 px-6 rounded-lg text-sm font-semibold hover:-translate-y-0.5
                                     hover:border-zinc-500 hover:text-white transition-all duration-200 inline-block"
                             >
-                                Visit my LinkedIn profile
+                                {t.posts.visitProfile}
                             </a>
                         </div>
                     ) : (
                         <>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {posts.map((post, i) => (
-                                    <PostCard key={i} post={post} viewPostLabel={t.posts.viewPost} />
+                                    <PostCard key={i} post={post} viewPostLabel={t.posts.viewPost} lang={lang} />
                                 ))}
                             </div>
 
