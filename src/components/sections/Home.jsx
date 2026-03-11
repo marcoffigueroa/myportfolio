@@ -1,57 +1,72 @@
 import { useState, useEffect } from 'react';
 import RevealOnScroll from '../RevealOnScroll';
+import { useLang } from '../../i18n';
 
 export const Home = () => {
+    const { t } = useLang();
     const [text, setText] = useState('');
-    const text1 = 'FULLSTACK DEVELOPER';
-    const text2 = 'STUDENT';
+    const roles = t.home.roles;
+    const [roleIdx, setRoleIdx] = useState(0);
 
     useEffect(() => {
         let index = 0;
-        let fullText = text1;
+        let currentRoleIdx = 0;
+        let timeout;
         const typeText = () => {
-            setText(fullText.substring(0, index));
+            const currentRole = roles[currentRoleIdx];
+            setText(currentRole.substring(0, index));
             index++;
-            if (index > fullText.length) {
-                setTimeout(() => {
+            if (index > currentRole.length) {
+                timeout = setTimeout(() => {
                     index = 0;
-                    fullText = fullText === text1 ? text2 : text1;
+                    currentRoleIdx = (currentRoleIdx + 1) % roles.length;
+                    setRoleIdx(currentRoleIdx);
                     typeText();
-                }, 1000);
+                }, 1500);
             } else {
-                setTimeout(typeText, 100);
+                timeout = setTimeout(typeText, 90);
             }
         };
         typeText();
-
-        return () => clearTimeout(typeText);
-    }, []);
+        return () => clearTimeout(timeout);
+    }, [roles]);
 
     return (
-        <section id='home' className="w-full min-h-screen flex items-center justify-center relative">
+        <section id='home' className="w-full min-h-screen flex items-center justify-center relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/[0.04] rounded-full blur-[120px]" />
+            </div>
+
             <RevealOnScroll>
-                <div className="text-center z-10 px-4">
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-right">
-                        Hi, I'm Marco Figueroa
+                <div className="text-center z-10 px-6 max-w-2xl mx-auto">
+                    <p className="text-sm font-medium tracking-widest text-blue-400 uppercase mb-4">
+                        {t.home.eyebrow}
+                    </p>
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-5 text-white leading-tight">
+                        Marco Figueroa
                     </h1>
-                    <p>
-                        <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                            {text} <span className="animate-blink ml-1"> | </span>
-                        </p>
+                    <div className="h-8 mb-6">
+                        <span className="font-mono text-lg text-blue-400 tracking-wider">
+                            {text}<span className="animate-blink ml-0.5">|</span>
+                        </span>
+                    </div>
+
+                    <p className="text-zinc-400 text-base leading-relaxed mb-10 max-w-md mx-auto">
+                        {t.home.description}
                     </p>
 
-                    <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto ">
-                        Student at the moment, in 4th year of Systems Engineering at the "Universidad Nacional de Cordoba FRC".
-                    </p>
-                    <div className='flex justify-center space-x-4'>
-                        <a href='#projects' className='border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium hover:-translate-y-0.5 
-                        hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-900 hover:text-white transition-all duration-200'>
-                            View Projects
+                    <div className='flex flex-wrap justify-center gap-3'>
+                        <a href='#projects' className='bg-blue-600 text-white py-2.5 px-7 rounded-lg text-sm font-semibold hover:-translate-y-0.5
+                        hover:bg-blue-500 hover:shadow-[0_4px_20px_rgba(59,130,246,0.3)] transition-all duration-200'>
+                            {t.home.viewProjects}
                         </a>
-
-                        <a href='#contact' className='border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium hover:-translate-y-0.5 
-                        hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-900 hover:text-white transition-all duration-200'>
-                            Contact Me
+                        <a href='#about' className='border border-zinc-700 text-zinc-300 py-2.5 px-7 rounded-lg text-sm font-semibold hover:-translate-y-0.5
+                        hover:border-zinc-500 hover:text-white transition-all duration-200'>
+                            {t.home.aboutMe}
+                        </a>
+                        <a href='#contact' className='border border-zinc-700 text-zinc-300 py-2.5 px-7 rounded-lg text-sm font-semibold hover:-translate-y-0.5
+                        hover:border-zinc-500 hover:text-white transition-all duration-200'>
+                            {t.home.contact}
                         </a>
                     </div>
                 </div>
