@@ -60,6 +60,10 @@ export const Home = () => {
                         hover:bg-blue-500 hover:shadow-[0_4px_20px_rgba(59,130,246,0.3)] transition-all duration-200'>
                             {t.home.viewProjects}
                         </a>
+                        <a href='#posts' className='border border-zinc-700 text-zinc-300 py-2.5 px-7 rounded-lg text-sm font-semibold hover:-translate-y-0.5
+                        hover:border-zinc-500 hover:text-white transition-all duration-200'>
+                            {t.home.posts}
+                        </a>
                         <a href='#about' className='border border-zinc-700 text-zinc-300 py-2.5 px-7 rounded-lg text-sm font-semibold hover:-translate-y-0.5
                         hover:border-zinc-500 hover:text-white transition-all duration-200'>
                             {t.home.aboutMe}

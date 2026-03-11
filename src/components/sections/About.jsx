@@ -12,6 +12,7 @@ export const About = () => {
         { title: 'Tools & Platforms', skills: ['Docker', 'VS Code', 'IntelliJ IDEA', 'Maven', 'Postman', 'MATLAB'] },
         { title: 'Theoretical Knowledge', skills: ['Software Engineering', 'Design Patterns', 'Clean Architecture', 'Agile / Scrum', 'Data Structures & Algorithms', 'Distributed Systems', 'Networking'] },
         { title: 'Soft Skills', skills: ['Problem Solving', 'Analytical Thinking', 'Fast Learner', 'Team Collaboration', 'Distributed Teams Communication', 'End-to-End Ownership', 'Adaptability'] },
+        { title: t.about.languages, skills: t.about.languagesList },
     ];
 
     return (
@@ -52,10 +53,12 @@ export const About = () => {
                         ))}
                     </div>
 
+                    {/* Work experience */}
+                    <h3 className="text-lg font-bold text-white mb-5">{t.about.workExperience}</h3>
+
                     {/* Thalus Kine highlight */}
                     <div className="bg-zinc-900/60 rounded-2xl p-8 border border-zinc-800 mb-8">
                         <div className="flex items-center gap-2 mb-3">
-                            <span className="text-lg">🩺</span>
                             <h3 className="text-base font-bold text-white">{t.about.thalusTitle}</h3>
                         </div>
                         <p className="text-zinc-400 text-sm leading-relaxed">
@@ -63,11 +66,10 @@ export const About = () => {
                         </p>
                     </div>
 
-                    {/* Work experience */}
+                    {/* Work experience cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         <div className="p-6 rounded-xl border border-zinc-800 bg-zinc-900/40">
                             <div className="flex items-center gap-2 mb-1">
-                                <span>🏦</span>
                                 <h3 className="text-base font-bold text-white">Banco de Córdoba</h3>
                             </div>
                             <p className="text-blue-400 text-xs mb-3 font-medium">{t.about.bancoRole}</p>
@@ -77,7 +79,6 @@ export const About = () => {
                         </div>
                         <div className="p-6 rounded-xl border border-zinc-800 bg-zinc-900/40">
                             <div className="flex items-center gap-2 mb-1">
-                                <span>💼</span>
                                 <h3 className="text-base font-bold text-white">EPAM Systems</h3>
                             </div>
                             <p className="text-blue-400 text-xs mb-3 font-medium">{t.about.epamRole}</p>
@@ -90,7 +91,6 @@ export const About = () => {
                     {/* Education */}
                     <div className="p-6 rounded-xl border border-zinc-800 bg-zinc-900/40">
                         <div className="flex items-center gap-2 mb-3">
-                            <span>🏫</span>
                             <h3 className="text-base font-bold text-white">{t.about.education}</h3>
                         </div>
                         <ul className="list-disc list-inside text-zinc-400 space-y-1.5 text-sm">
