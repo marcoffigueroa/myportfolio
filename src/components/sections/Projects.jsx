@@ -176,7 +176,7 @@ const Modal = ({ project, itemT, projT, initialTab, onClose }) => {
                                         {project.roleIcons.map((icon, i) => (
                                             <div key={i} className="bg-zinc-900/80 rounded-xl p-4 border border-zinc-800">
                                                 <div className="text-2xl mb-2">{icon}</div>
-                                                <div className="font-semibold text-white text-sm mb-1">{project.roleNames[i]}</div>
+                                                <div className="font-semibold text-white text-sm mb-1">{itemT.roleNames ? itemT.roleNames[i] : project.roleNames[i]}</div>
                                                 <div className="text-zinc-400 text-xs leading-relaxed">{itemT.roles[i].desc}</div>
                                             </div>
                                         ))}
@@ -254,7 +254,7 @@ const Modal = ({ project, itemT, projT, initialTab, onClose }) => {
 const ProjectCard = ({ project, itemT, projT, onOpen }) => (
     <div className="flex flex-col p-6 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:border-zinc-700 transition-all duration-300">
         <h3 className="text-lg font-bold mb-2 text-white">{itemT.title}</h3>
-        <p className="text-zinc-400 text-sm mb-4 line-clamp-2 leading-relaxed flex-1">{itemT.shortDesc}</p>
+        <p className="text-zinc-400 text-sm mb-4 leading-relaxed flex-1">{itemT.shortDesc}</p>
         <div className="flex flex-wrap gap-2 mb-5">
             {project.stack.slice(0, 5).map(s => <StackTag key={s} tech={s} />)}
             {project.stack.length > 5 && (

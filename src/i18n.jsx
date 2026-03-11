@@ -45,6 +45,7 @@ const translations = {
                     ],
                     approach: 'Developed using iterative MVP methodology — delivering a functional system first (authentication, appointments, roles, dashboards), then progressively adding integrations: payment processing via Mercado Pago, WhatsApp activity notifications, and Google Calendar sync.',
                     architecture: 'Django monolithic architecture with modular apps: accounts, branches, services, appointments, payments, notifications, and calendar sync. Deployed on a VPS with Cloudflare protection and token-based role-based access control.',
+                    roleNames: ['Receptionist', 'Professional', 'Patient'],
                     roles: [
                         { desc: 'Manages appointments, attendance and daily operations per branch' },
                         { desc: 'Views assigned schedule, manages patient sessions and tracks attendance' },
@@ -192,6 +193,7 @@ const translations = {
                     ],
                     approach: 'Desarrollado con metodología MVP iterativa — entregando primero un sistema funcional (autenticación, turnos, roles, dashboards), y luego integrando progresivamente: procesamiento de pagos via Mercado Pago, notificaciones por WhatsApp y sincronización con Google Calendar.',
                     architecture: 'Arquitectura monolítica Django con apps modulares: cuentas, sucursales, servicios, turnos, pagos, notificaciones y sincronización de calendario. Desplegado en VPS con protección Cloudflare y control de acceso basado en roles con tokens.',
+                    roleNames: ['Recepcionista', 'Profesional', 'Paciente'],
                     roles: [
                         { desc: 'Gestiona turnos, asistencia y operaciones diarias por sucursal' },
                         { desc: 'Ve su agenda asignada, gestiona sesiones de pacientes y registra asistencia' },

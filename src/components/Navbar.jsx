@@ -38,7 +38,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
             className="font-mono text-lg font-bold text-white flex items-center gap-2 tracking-tight"
           >
             <img src={Logo} alt="Logo" className="h-7" />
-            marco<span className="text-blue-400">.figueroa</span>
+            Marco <span className="text-blue-400">Figueroa</span>
           </a>
 
           <div className="flex items-center gap-3 md:hidden">
