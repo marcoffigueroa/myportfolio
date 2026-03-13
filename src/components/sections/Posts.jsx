@@ -76,7 +76,7 @@ export const Posts = () => {
                         <div className="text-center py-12">
                             <p className="text-zinc-400 mb-4">{t.posts.errorMsg}</p>
                             <a
-                                href="https://www.linkedin.com/in/marcoffigueroa/"
+                                href="https://www.linkedin.com/in/marco-figueroa-533848314/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="border border-zinc-700 text-zinc-300 py-2.5 px-6 rounded-lg text-sm font-semibold hover:-translate-y-0.5
@@ -95,7 +95,7 @@ export const Posts = () => {
 
                             <div className="text-center mt-8">
                                 <a
-                                    href="https://www.linkedin.com/in/marcoffigueroa/"
+                                    href="https://www.linkedin.com/in/marco-figueroa-533848314/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="border border-zinc-700 text-zinc-300 py-2.5 px-6 rounded-lg text-sm font-semibold hover:-translate-y-0.5
